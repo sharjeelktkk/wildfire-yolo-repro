@@ -1,0 +1,45 @@
+# ---------------------------------------------------------------------------
+# Baseline training configuration
+# Paper: Goncalves, Ghali, Akhloufi (2024), "YOLO-Based Models for Smoke and
+#        Wildfire Detection in Ground and Aerial Images", Fire 7(4):140
+#        doi:10.3390/fire7040140
+#
+# [PAPER]  = value reported in the paper
+# [ASSUME] = not reported (or magnitude not reported) -> documented assumption
+# ---------------------------------------------------------------------------
+seed: 0                 # [ASSUME] paper reports no seed
+imgsz: 640              # [PAPER]
+epochs: 100             # [PAPER]
+batch: 16               # [PAPER]
+optimizer: SGD          # [ASSUME] paper gives lr=0.01 + momentum=0.937 (SGD defaults);
+                        #   Ultralytics 'auto' would silently switch to AdamW and ignore lr0
+lr0: 0.01               # [PAPER]
+momentum: 0.937         # [PAPER]
+weight_decay: 0.0005    # [PAPER]
+pretrained: true        # [PAPER] COCO-pretrained weights (yolov8n.pt / yolov8s.pt)
+patience: 100           # [ASSUME] early stopping effectively disabled so all 100 epochs run
+cos_lr: false           # [ASSUME] Ultralytics default (linear LR decay)
+amp: true               # [ASSUME] mixed precision (Ultralytics default)
+deterministic: true
+workers: 4
+cache: false            # set to "ram" or "disk" for faster epochs if memory allows
+
+# Augmentation: the paper lists rotation, translation, scale, shear, mixup and flip
+# but NOT their magnitudes -> the values below are assumptions.
+augment:
+  degrees: 10.0         # [ASSUME] rotation
+  translate: 0.1        # [ASSUME] (Ultralytics default)
+  scale: 0.5            # [ASSUME] (Ultralytics default)
+  shear: 2.0            # [ASSUME]
+  fliplr: 0.5           # [ASSUME] horizontal flip (Ultralytics default)
+  mixup: 0.1            # [ASSUME]
+  mosaic: 1.0           # [ASSUME] Ultralytics default (not mentioned in the paper)
+  hsv_h: 0.015          # [ASSUME] Ultralytics defaults
+  hsv_s: 0.7
+  hsv_v: 0.4
+
+# Evaluation (Ultralytics validator defaults; paper does not state conf/NMS-IoU)
+eval:
+  conf: 0.001
+  iou: 0.7
+  split: test

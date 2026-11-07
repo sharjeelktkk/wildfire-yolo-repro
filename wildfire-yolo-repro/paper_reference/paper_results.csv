@@ -1,0 +1,12 @@
+dataset,model,map50,ap_smoke,ap_fire,gflops,train_time_h,energy_wh
+dfire,yolov5n,75.90,80.70,71.00,4.10,2.100,
+dfire,yolov8n,77.80,84.00,71.50,8.10,2.002,
+dfire,yolov8s,78.70,84.90,72.50,28.40,2.767,
+dfire,yolov8x,79.70,85.60,73.90,257.40,10.795,
+dfire,yolov7x,80.40,85.50,75.40,188.00,11.655,
+dfire,fasterrcnn,35.95,31.90,40.00,406.00,2.420,
+wsdy,yolov8s,98.10,,,28.40,0.241,79.53
+wsdy,yolov8n,97.30,,,8.10,0.179,59.07
+wsdy,yolov7x,96.00,,,188.00,0.353,116.49
+wsdy,yolov5n,95.90,,,4.10,0.085,28.05
+wsdy,fasterrcnn,50.34,,,406.00,2.097,692.01

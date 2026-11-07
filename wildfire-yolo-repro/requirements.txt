@@ -1,0 +1,14 @@
+# Core
+ultralytics>=8.3.0      # YOLOv8 (AGPL-3.0) - https://github.com/ultralytics/ultralytics
+torch>=2.1
+torchvision>=0.16
+# Data / plotting
+numpy
+pandas
+matplotlib
+pillow
+pyyaml
+tqdm
+psutil
+# Optional: dataset download from Google Drive
+gdown
